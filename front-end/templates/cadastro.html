@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@
                     <li class="nav-item active"><a href="#home">Torne-se um prestador</a></li>
                 </ul>
                 <ul id="nav_list">
-                    <li class="nav-item"><a href="login.html">Entrar</a></li>
+                    <li class="nav-item"><a href="{% url 'loginPage' %}">Entrar</a></li>
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
@@ -46,7 +47,7 @@
                     <button class="cadastro-btn">Cadastrar</button>
                 </form>
             </div>
-            <p><a href="login.html">Já tem conta? Faça login</a></p>
+            <p><a href="{% url 'loginPage' %}">Já tem conta? Faça login</a></p>
             
         </div>
     </main>
