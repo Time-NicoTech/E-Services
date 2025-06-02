@@ -1,11 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .managers import UsuarioManager
 
 class Usuario(AbstractUser):
     address = models.CharField(max_length=200, blank=True, null=True)
     contact = models.CharField(max_length=100, blank=True, null=True)
     company_name = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(unique=True, blank=False, null=False)
+    USERNAME_FIELD = 'email'
 
+    REQUIRED_FIELDS = [] #vai precisar somente do email para criar superuser
+
+    objects = UsuarioManager()
 
     class Meta:
         verbose_name = "Usuário"

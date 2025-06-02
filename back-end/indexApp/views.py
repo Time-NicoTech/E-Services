@@ -1,20 +1,26 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+from django.contrib import auth
 def loadIndexPage(request):
     if request.method == 'GET':
         return render(request, "index.html")
 
 
 def loadCadastroPage(request):
-    if request.method == 'POST':
-        
-        return redirect('loginPage')
-    else:
+    if request.method == 'GET':
         return render(request, 'cadastro.html')
 
 def loadLoginPage(request):
     if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        user = auth.authenticate(request, username= email, password=password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, "Login Efetuado com sucesso!")
+            return redirect('loginPage')
+        messages.error(request, 'Credenciais de usuário inválidos!')
         return render(request, 'index.html')
     else:
         return render(request, 'login.html')

@@ -37,9 +37,9 @@
         <div class="login-box">
             <h1 class="login-title">Login</h1>
             <div class="form-login">
-                <form action="" class="login-form">
-                    <input type="text" placeholder="Email">
-                    <input type="text" placeholder="Senha">
+                <form action="{% url 'loginPage' %}" method="post" class="login-form">{% csrf_token %}
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Senha">
                     <button class="login-btn">Login</button>
                 </form>
             </div>
