@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,16 +38,14 @@
         <div class="service-box">
             <h1 class="service-title">Cadastre seu serviço</h1>
             <div class="form-service">
-                <form action="{% url 'servicePage' %}" method="post" class="service-form">
-                    <input type="text" name="title" placeholder="Nome do Serviço">
-                    <input type="text" name="description" placeholder="Descrição">
-                    <input type="text" name="value" placeholder="Valor (R$)">
-                    <input type="file" name="image" placeholder="Imagem">
+                <form action="{% url 'addServicesRoute' %}" method="post" class="service-form" enctype="multipart/form-data">{% csrf_token %}
+                    <input type="text" name="titulo" placeholder="Nome do Serviço">
+                    <input type="text" name="descricao" placeholder="Descrição">
+                    <input type="number" name="valor" placeholder="Valor (R$)">
+                    <input type="file" name="imagem" placeholder="Imagem">
                     <button class="service-btn">Cadastrar Serviço</button>
-                    
                 </form>
             </div>
-            
         </div>
     </main>
 </body>

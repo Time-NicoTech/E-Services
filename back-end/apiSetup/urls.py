@@ -8,7 +8,9 @@ urlpatterns = [
     path('', loadIndexPage, name="indexPage"),
     path('login/', loadLoginPage, name='loginPage'),
     path('cadastro/', loadCadastroPage, name='cadastroPage'),
+    path('prestador/', loadServicePage, name="servicePage"),
     path('api/', include('api.urls')),
+    path('searchAll/', loadSearchPage, name='searchPage'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

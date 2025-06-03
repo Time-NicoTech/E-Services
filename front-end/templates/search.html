@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,7 +22,7 @@
     <header>
         <nav id="navbar">
             <nav id="itens">
-                <a href="index.html"><i id="nav_logo" class="bi bi-amd"></i></a>
+                <a href="{% url 'indexPage' %}"><i id="nav_logo" class="bi bi-amd"></i></a>
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
@@ -40,7 +40,7 @@
         <div class="principal">
             <h1>Encontre o <span>serviço</span> ideal imediatamente!</h1>
             <p>Descubra rapidamente os serviços que atendem às suas necessidades com<br> eficiência e praticidade. Estamos aqui para facilitar sua escolha e conectar<br> você às melhores opções disponíveis.</p>
-            <form action="" method="post">
+            <form action="" method="post">{% csrf_token %}
                 <input type="text" placeholder="O que você esta procurando?">
                 <button><i class="bi bi-search"></i></button>
             </form>
@@ -54,6 +54,13 @@
                     <h2 class="ps-card-value">R$20,00</h2>
                     <button class="seemore-btn"><a href="">Ver Mais</a></button>
                 </div>
+                {% if services %}
+                    {% for service in services %}
+                        {% include 'partials/card.html' with item=service %}
+                    {% endfor %}
+                {% else %}
+                    <p style="font-size: 36px;color: white;">Não há serviços no momento!</p>
+                {% endif %}
             </div>
         </div>
     </main>
