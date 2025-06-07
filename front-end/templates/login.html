@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/login-main.css">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
     <title>Login</title>
 </head>
 <body>
@@ -24,17 +25,19 @@
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="#home">Torne-se um prestador</a></li>
-                </ul>
-                <ul id="nav_list">
-                    <li class="nav-item"><a href="{% url 'loginPage' %}">Entrar</a></li>
+                    <li class="nav-item active"><a href="{% url 'indexPage' %}">Voltar</a></li>
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
             
         </nav>
     </header>
-    <main>
+    <main style="position: relative;">
+        {% if messages %}
+            {% for message in messages %}
+                <span class="msg-box error"><i class="bi bi-exclamation-octagon"></i><p>{{message}}</p></span>
+            {% endfor %}
+        {% endif %}
         <div class="login-box">
             <h1 class="login-title">Login</h1>
             <div class="form-login">
@@ -45,8 +48,8 @@
                 </form>
             </div>
             <p><a href="{% url 'cadastroPage' %}">Não tem conta? Cadastre-se</a></p>
-            
         </div>
     </main>
+       <script src="{% static 'js/api.js' %}" type="module"></script>
 </body>
 </html>

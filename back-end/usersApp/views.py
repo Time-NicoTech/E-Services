@@ -29,8 +29,6 @@ def addUser(request):
 
         if user.is_valid():
             user.save()
-            print(user)
-            
             return Response({'message':'Usuário cadastrado com sucesso!'}, status=status.HTTP_201_CREATED)
 
         else:

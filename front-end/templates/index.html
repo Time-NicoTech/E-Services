@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
     <title>E-Services</title>
 </head>
 <body>
@@ -23,20 +24,40 @@
         <nav id="navbar">
             <nav id="itens">
                 <a href="{% url 'indexPage' %}"><i id="nav_logo" class="bi bi-amd"></i></a>
+                {% if request.user.is_authenticated %}
+                <div>
+                    <i class="bi bi-person-circle"></i>
+                    <p>{{request.user.username}}</p>
+                </div>
+                {% endif %}
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="{% url 'servicePage' %}">Torne-se um prestador</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item active"><a href="{% url 'myServicesPage' %}">Meus serviços</a></li>
+                        <li class="nav-item active"><a href="{% url 'cadastroServicePage' %}">Cadastre um serviço</a></li>
+                    {% else %}
+                        <li class="nav-item active"><a href="{% url 'cadastroServicePage' %}">Torne-se um prestador</a></li>
+                    {% endif %}
                 </ul>
                 <ul id="nav_list">
-                    <li class="nav-item"><a href="{% url 'loginPage' %}">Entrar</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="logout-link" href="{% url 'logout' %}">Sair</a></li>
+                    {% else %}    
+                        <li class="nav-item"><a href="{% url 'loginPage' %}">Entrar</a></li>
+                    {% endif %}
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
             
         </nav>
     </header>
-    <main>
+    <main style="position: relative;">
+        {% if messages %}
+            {% for message in messages %}
+                <span class="msg-box success"><i class="bi bi-check-square"></i></i><p>{{message}}</p></span>
+            {% endfor %}
+        {% endif %}
         <div class="principal">
             <h1>Encontre o <span>serviço</span> ideal imediatamente!</h1>
             <p>Descubra rapidamente os serviços que atendem às suas necessidades com<br> eficiência e praticidade. Estamos aqui para facilitar sua escolha e conectar<br> você às melhores opções disponíveis.</p>
@@ -119,6 +140,7 @@
             </div>
             
         </div>
-    </footer>
+    </footer>]
+    <script src="{% static 'js/api.js' %}" type="module"></script>
 </body>
 </html>

@@ -22,10 +22,16 @@
         <nav id="navbar">
             <nav id="itens">
                 <a href="{% url 'indexPage' %}"><i id="nav_logo" class="bi bi-amd"></i></a>
+                {% if request.user.is_authenticated %}
+                <div>
+                    <i class="bi bi-person-circle"></i>
+                    <p>{{request.user.username}}</p>
+                </div>
+                {% endif %}
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="{% url 'cadastroPage' %}">Voltar para o inicio</a></li>
+                    <li class="nav-item active"><a href="{% url 'indexPage' %}">Voltar para o inicio</a></li>
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
@@ -74,6 +80,13 @@
                     <i class="bi bi-trash"></i>
                 </div>
             </div>
+             {% if services %}
+                {% for service in services %}
+                    {% include 'partials/cardForMyServicesPage.html' with item=service %}
+                {% endfor %}
+            {% else %}
+                    <p style="font-size: 36px;color: white;">Não há serviços no momento!</p>
+            {% endif %}
         </div>
     </main>
     </body>

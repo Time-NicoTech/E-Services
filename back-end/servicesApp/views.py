@@ -28,7 +28,7 @@ def addService(request):
         if service.is_valid():
             new_service= service.save(usuario=request.user)
 
-            html_card = render(request, 'partials/card.html', {'service':new_service}).content.decode('utf-8')
+            html_card = render(request, 'partials/cardForMyServicesPage.html', {'service':new_service}).content.decode('utf-8')
             print(html_card)
             return Response({'message':'Serviço cadastrado com sucesso!', 'success':True, 'html_card':html_card, 'card_id':new_service.id}, status=status.HTTP_201_CREATED)
         else:

@@ -10,6 +10,29 @@ header{
     justify-content: space-between;
     gap: 500px;
 }
+
+#itens{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#itens div{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+#itens div p{
+    color: rgb(33, 132, 232);
+    font-size: 24px;
+}
+
+#itens div i{
+    font-size: 20px;
+    color: #fff;
+}
+
 #itens2{
     display: flex;
     gap: 50px;

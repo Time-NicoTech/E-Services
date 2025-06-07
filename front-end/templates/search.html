@@ -56,7 +56,7 @@
                 </div>
                 {% if services %}
                     {% for service in services %}
-                        {% include 'partials/card.html' with item=service %}
+                        {% include 'partials/cardForSearchPage.html' with item=service %}
                     {% endfor %}
                 {% else %}
                     <p style="font-size: 36px;color: white;">Não há serviços no momento!</p>

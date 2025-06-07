@@ -7,10 +7,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loadIndexPage, name="indexPage"),
     path('login/', loadLoginPage, name='loginPage'),
+    path('logout/', logout, name='logout'),
     path('cadastro/', loadCadastroPage, name='cadastroPage'),
-    path('prestador/', loadServicePage, name="servicePage"),
+    path('cadastroService/', loadCadastroServicePage, name="cadastroServicePage"),
     path('api/', include('api.urls')),
     path('searchAll/', loadSearchPage, name='searchPage'),
+    path('myServices/', loadMyServicesPage, name='myServicesPage')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
