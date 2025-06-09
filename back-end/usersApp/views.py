@@ -32,6 +32,7 @@ def addUser(request):
             return Response({'message':'Usuário cadastrado com sucesso!'}, status=status.HTTP_201_CREATED)
 
         else:
+            print(user.errors)
             return Response({'message':'Erro no cadastro!', 'errors':user.errors}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response({'message': "Método não permitido! Só POST é possível.", 'status':'error'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)

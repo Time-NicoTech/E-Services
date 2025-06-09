@@ -31,7 +31,10 @@
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="{% url 'indexPage' %}">Voltar para o inicio</a></li>
+                    <li class="nav-item active"><a href="{% url 'cadastroServicePage' %}">Cadastrar um serviço</a></li>
+                </ul>
+                <ul id="nav_list">
+                    <li class="nav-item"><a href="{% url 'indexPage' %}">Voltar para o inicio</a></li>
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
@@ -40,46 +43,6 @@
     </header>
     <main>
         <div class="my-cards">
-            <div class="my-card">
-                <img src="../assets/imgs/servico-tecnico.png" class="service-image"alt="">
-                <h1 class="my-card-title">Contrutor de casas</h1>
-                <p class="my-card-title">Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas</p>
-                <h2 class="my-card-value">R$20,00</h2>
-                <div class="icons">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash"></i>
-                </div>
-            </div>
-            <div class="my-card">
-                <img src="../assets/imgs/servico-tecnico.png" class="service-image"alt="">
-                <h1 class="my-card-title">Contrutor de casas</h1>
-                <p class="my-card-title">Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas</p>
-                <h2 class="my-card-value">R$20,00</h2>
-                <div class="icons">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash"></i>
-                </div>
-            </div>
-            <div class="my-card">
-                <img src="../assets/imgs/servico-tecnico.png" class="service-image"alt="">
-                <h1 class="my-card-title">Contrutor de casas</h1>
-                <p class="my-card-title">Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas</p>
-                <h2 class="my-card-value">R$20,00</h2>
-                <div class="icons">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash"></i>
-                </div>
-            </div>
-            <div class="my-card">
-                <img src="../assets/imgs/servico-tecnico.png" class="service-image"alt="">
-                <h1 class="my-card-title">Contrutor de casas</h1>
-                <p class="my-card-title">Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas Contrutor de casas que controi casas bem contruidas</p>
-                <h2 class="my-card-value">R$20,00</h2>
-                <div class="icons">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash"></i>
-                </div>
-            </div>
              {% if services %}
                 {% for service in services %}
                     {% include 'partials/cardForMyServicesPage.html' with item=service %}

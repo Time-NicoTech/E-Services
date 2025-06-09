@@ -7,7 +7,10 @@ class Usuario(AbstractUser):
     contact = models.CharField(max_length=100, blank=True, null=True)
     company_name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(unique=True, blank=False, null=False)
+    
     USERNAME_FIELD = 'email'
+    
+    
 
     REQUIRED_FIELDS = [] #vai precisar somente do email para criar superuser
 

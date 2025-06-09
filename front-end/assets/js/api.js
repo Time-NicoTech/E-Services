@@ -1,4 +1,4 @@
-import { checkMsgBox, displayMessage } from "./utils.js";
+import { displayMessage } from "./utils.js";
 
 function handleCadastroUser(e){
     e.preventDefault();
@@ -10,7 +10,7 @@ function handleCadastroUser(e){
     const password2 = document.querySelector("input[name='password2']").value;
 
 
-    fetch('http://127.0.0.1:8000/api/users/add/', {
+    fetch('/api/users/add/', {
         method:'post',
         headers:{
             'Content-Type':'application/json',
@@ -29,7 +29,7 @@ function handleCadastroUser(e){
     .then(response => {
         if(!response.ok){
             return response.json().then(data=>{
-                displayMessage(data.message, "error");
+                displayMessage(data.errors, "error");
                 throw new Error(data.errors || "Erro desconhecido do servidor")
             })
         }
@@ -41,8 +41,54 @@ function handleCadastroUser(e){
         displayMessage(data.message, 'success');
         setTimeout(()=>{
             window.location.href = '/login/';
-        }, 3000)
+        }, 5000)
     })
 }
 
-document.querySelector('.cadastro-form').addEventListener('submit', handleCadastroUser);
+function handleCadastroService(e){
+    e.preventDefault();
+    console.log("entrou na function");
+    const form = e.target;
+
+    const formData = new FormData(form);
+    
+    fetch('/api/services/add/', {
+        method:"post",
+        headers:{
+            "X-CSRFToken": document.cookie.split('=')[1]
+        },
+        body:formData
+    })
+    .then(response => {
+        if(!response.ok){
+            return response.json().then(data=>{
+                displayMessage(data.message, "error");
+                throw new Error(data.errors || "Erro desconhecido do servidor")
+            })
+        }
+
+        return response.json();
+    })
+    .then(data=>{
+        console.log("Sucesso", data);
+        form.reset()
+        displayMessage(data.message, 'success');
+        
+    })
+
+}
+
+// quando todo o html tiver carregado:
+document.addEventListener('DOMContentLoaded', ()=>{
+
+    const urlAtual = window.location.pathname; //pega a url relativa atual
+    
+    if(urlAtual === "/cadastro/"){    
+        document.querySelector('.cadastro-form').addEventListener('submit', handleCadastroUser);
+    }else if(urlAtual=== "/cadastroService/"){
+        console.log("entrou")
+        document.querySelector('.service-form').addEventListener('submit', handleCadastroService);
+    }
+})
+
+

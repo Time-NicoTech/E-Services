@@ -7,7 +7,7 @@ from api.models import Servico
 from django.shortcuts import render
 
 modelo_usuario = get_user_model()
-
+ 
 @api_view(['GET'])
 def getAllServices(request):
     services = Servico.objects.all()
@@ -26,12 +26,15 @@ def addService(request):
         service = ServiceSerializer(data=request.data)
 
         if service.is_valid():
-            new_service= service.save(usuario=request.user)
+            service.save(usuario=request.user)
 
-            html_card = render(request, 'partials/cardForMyServicesPage.html', {'service':new_service}).content.decode('utf-8')
-            print(html_card)
-            return Response({'message':'Serviço cadastrado com sucesso!', 'success':True, 'html_card':html_card, 'card_id':new_service.id}, status=status.HTTP_201_CREATED)
+
+            #caso a página de cadastro de serviços e a de listar serviços fosse uma só
+            # html_card = render(request, 'partials/cardForMyServicesPage.html', {'service':new_service}).content.decode('utf-8')
+
+            return Response({'message':'Serviço cadastrado com sucesso!', 'success':True}, status=status.HTTP_201_CREATED)
         else:
-            return Response({'message':'Erro no cadastro!', 'errors':service.errors}, status=status.HTTP_400_BAD_REQUEST)
+            print(service.errors)
+            return Response({'message':'Erro no cadastro!', 'errors':service.errors, 'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-    return Response({'message': "Método não permitido! Só POST é possível.", 'status':'error'}, status=status.HTTP_405_METHOD_NOT_ALLOWED) 
+    return Response({'message': "Método não permitido! Só POST é possível.", 'success':False}, status=status.HTTP_405_METHOD_NOT_ALLOWED) 

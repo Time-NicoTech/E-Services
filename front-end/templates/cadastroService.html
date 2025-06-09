@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/service-main.css">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
     <title>Prestador</title>
 </head>
 <body>
@@ -30,7 +31,10 @@
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="{% url 'indexPage' %}">Voltar</a></li>
+                    <li class="nav-item active"><a href="{% url 'myServicesPage' %}">Meus Serviços</a></li>
+                </ul>
+                <ul id="nav_list">
+                    <li class="nav-item"><a href="{% url 'indexPage' %}">Voltar</a></li>
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
@@ -41,15 +45,16 @@
         <div class="service-box">
             <h1 class="service-title">Cadastre seu serviço</h1>
             <div class="form-service">
-                <form action="{% url 'addServicesRoute' %}" method="post" class="service-form" enctype="multipart/form-data">{% csrf_token %}
-                    <input type="text" name="titulo" placeholder="Nome do Serviço">
-                    <input type="text" name="descricao" placeholder="Descrição">
-                    <input type="number" name="valor" placeholder="Valor (R$)">
+                <form method="post" class="service-form" enctype="multipart/form-data">{% csrf_token %}
+                    <input type="text" name="titulo" placeholder="Nome do Serviço" required>
+                    <input type="text" name="descricao" placeholder="Descrição" required>
+                    <input type="number" name="valor" placeholder="Valor (R$)" required>
                     <input type="file" name="imagem" placeholder="Imagem">
                     <button class="service-btn">Cadastrar Serviço</button>
                 </form>
             </div>
         </div>
     </main>
+    <script src="{% static 'js/api.js' %}" type="module"></script>
 </body>
 </html>

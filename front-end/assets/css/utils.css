@@ -1,3 +1,7 @@
+main {
+    position: relative;
+}
+
 .msg-box{
     padding: 20px;
     position: absolute;
