@@ -55,8 +55,8 @@
         <div class="principal">
             <h1>Encontre o <span>serviço</span> ideal imediatamente!</h1>
             <p>Descubra rapidamente os serviços que atendem às suas necessidades com<br> eficiência e praticidade. Estamos aqui para facilitar sua escolha e conectar<br> você às melhores opções disponíveis.</p>
-            <form action="" method="post">{% csrf_token %}
-                <input type="text" placeholder="O que você esta procurando?">
+            <form method="get" action="{% url 'searchPage' %}">{% csrf_token %}
+                <input type="text" placeholder="O que você esta procurando?" name="searchInput">
                 <button><i class="bi bi-search"></i></button>
             </form>
         </div>

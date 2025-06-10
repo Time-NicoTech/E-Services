@@ -11,8 +11,7 @@ urlpatterns = [
     path('cadastro/', loadCadastroPage, name='cadastroPage'),
     path('cadastroService/', loadCadastroServicePage, name="cadastroServicePage"),
     path('api/', include('api.urls')),
-    path('searchAll/', loadSearchPage, name='searchPage'),
-    path('myServices/', loadMyServicesPage, name='myServicesPage')
+    path('myServices/', loadMyServicesPage, name='myServicesPage'),
+    path('search/', loadSearchPage, name='searchPage'),
+    path('search/detail/<int:idService>', loadDetailPage, name="detailPage")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

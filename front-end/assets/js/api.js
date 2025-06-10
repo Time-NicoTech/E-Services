@@ -78,6 +78,7 @@ function handleCadastroService(e){
 
 }
 
+
 // quando todo o html tiver carregado:
 document.addEventListener('DOMContentLoaded', ()=>{
 

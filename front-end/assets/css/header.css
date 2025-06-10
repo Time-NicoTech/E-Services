@@ -3,6 +3,10 @@ header{
     padding: 28px 8%;
 }
 
+.logout-link{
+    border-bottom: 3px solid rgb(249, 93, 93);
+}
+
 #navbar{
     width: 100%;
     display: flex;

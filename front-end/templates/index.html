@@ -53,7 +53,7 @@
             
         </nav>
     </header>
-    <main style="position: relative;">
+    <main>
         {% if messages %}
             {% for message in messages %}
                 <span class="msg-box success"><i class="bi bi-check-square"></i></i><p>{{message}}</p></span>
@@ -62,7 +62,7 @@
         <div class="principal">
             <h1>Encontre o <span>serviço</span> ideal imediatamente!</h1>
             <p>Descubra rapidamente os serviços que atendem às suas necessidades com<br> eficiência e praticidade. Estamos aqui para facilitar sua escolha e conectar<br> você às melhores opções disponíveis.</p>
-            <form method="post">{% csrf_token %}
+            <form method="get" action="{% url 'searchPage' %}">{% csrf_token %}
                 <input type="text" name="searchInput" placeholder="O que você esta procurando?">
                 <button><i class="bi bi-search"></i></button>
             </form>

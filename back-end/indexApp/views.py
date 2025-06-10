@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib import auth
 from api.models import Servico
+from django.db.models import Q
 def loadIndexPage(request):
         return render(request, "index.html")
 
@@ -45,10 +46,21 @@ def loadMyServicesPage(request):
 
 def loadSearchPage(request):
     if request.method == 'GET':
+        query = request.GET.get('searchInput')
         services = Servico.objects.all()
 
-        return render(request, 'search.html', {'services':services})
+        if query:
+            services = services.filter(
+                Q(titulo__icontains=query) | Q(descricao__icontains=query)
+            )
 
+        return render(request, 'search.html', {'services':services, "current_query":query})
+
+
+def loadDetailPage(request, idService):
+    service = Servico.objects.get(pk=idService)
+    previous_query= request.GET.get('searchInput', '')
+    return render(request, 'detail.html', context={"service":service, "previous_query":previous_query})
 
 def logout(request):
     if request.user.is_authenticated:
