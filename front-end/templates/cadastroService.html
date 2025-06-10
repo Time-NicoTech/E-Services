@@ -22,12 +22,7 @@
         <nav id="navbar">
             <nav id="itens">
                 <a href="{% url 'indexPage' %}"><i id="nav_logo" class="bi bi-amd"></i></a>
-                {% if request.user.is_authenticated %}
-                <div>
-                    <i class="bi bi-person-circle"></i>
-                    <p>{{request.user.username}}</p>
-                </div>
-                {% endif %}
+                
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
@@ -35,6 +30,12 @@
                 </ul>
                 <ul id="nav_list">
                     <li class="nav-item"><a href="{% url 'indexPage' %}">Voltar</a></li>
+                    {% if request.user.is_authenticated %}
+                    <div>
+                        <i class="bi bi-person-circle"></i>
+                        <p>{{request.user.username}}</p>
+                    </div>
+                    {% endif %}
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>

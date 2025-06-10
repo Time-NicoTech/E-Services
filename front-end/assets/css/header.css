@@ -17,18 +17,18 @@ header{
     align-items: center;
 }
 
-#itens div{
+#nav_list div{
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 10px;
 }
 
-#itens div p{
-    color: rgb(33, 132, 232);
-    font-size: 24px;
+#nav_list div p{
+    color: rgb(255, 255, 255);
+    font-size: 15px;
 }
 
-#itens div i{
+#nav_list div i{
     font-size: 20px;
     color: #fff;
 }

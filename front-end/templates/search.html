@@ -26,10 +26,25 @@
             </nav>
             <nav id="itens2">
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="{% url 'cadastroPage' %}">Torne-se um prestador</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item active"><a href="{% url 'myServicesPage' %}">Meus serviços</a></li>
+                        <li class="nav-item active"><a href="{% url 'cadastroServicePage' %}">Cadastre um serviço</a></li>
+                    {% else %}
+                        <li class="nav-item active"><a href="{% url 'cadastroServicePage' %}">Torne-se um prestador</a></li>
+                    {% endif %}
                 </ul>
                 <ul id="nav_list">
-                    <li class="nav-item"><a href="{% url 'loginPage' %}">Entrar</a></li>
+                    {% if request.user.is_authenticated %}
+                    <div>
+                        <i class="bi bi-person-circle"></i>
+                        <p>{{request.user.username}}</p>
+                    </div>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="logout-link" href="{% url 'logout' %}">Sair</a></li>
+                    {% else %}    
+                        <li class="nav-item"><a href="{% url 'loginPage' %}">Entrar</a></li>
+                    {% endif %}
                 </ul>
                 <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
             </nav>
@@ -46,7 +61,7 @@
             </form>
         </div>
         <div class="popular-services">
-            <h1 class="ps-title">Reultados para sua pesquisa:</h1>
+            <h1 class="ps-title">Resultados para sua pesquisa:</h1>
             <div class="ps-cards">
                 <div class="ps-card">
                     <img src="../assets/imgs/servico-tecnico.png" class="service-image"alt="">
