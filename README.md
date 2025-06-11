@@ -2,7 +2,7 @@
 
 Este repositório contém o código do backend da aplicação E-Serviços, desenvolvida com Django e Django REST Framework. Ele gerencia dados de usuários e serviços, oferecendo APIs para cadastro, autenticação, busca e listagem.
 
-## 🚀 Funcionalidades Principais
+## Funcionalidades Principais
 
 * **Autenticação de Usuários:**
     * Cadastro de novos usuários com e-mail, nome de usuário, endereço, contato e nome da empresa.
@@ -24,14 +24,14 @@ Este repositório contém o código do backend da aplicação E-Serviços, desen
     * Configurado para usar um banco de dados PostgreSQL (como NeonDB) em produção.
     * Usa SQLite para desenvolvimento local.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **Django:** Framework web principal.
 * **Django REST Framework (DRF):** Para construção de APIs RESTful.
 * **Python:** Linguagem de programação.
 * **Pillow:** Para processamento de imagens (necessário para `ImageField`).
 
-## ⚙️ Configuração do Ambiente Local
+## Configuração do Ambiente Local
 
 Para colocar o backend em funcionamento na sua máquina local:
 
@@ -78,7 +78,7 @@ Para colocar o backend em funcionamento na sua máquina local:
     ```
     O backend estará acessível em `http://127.0.0.1:8000/`.
 
-## 🌐 Endpoints da API
+## Endpoints da API
 
 A API está acessível sob o prefixo `/api/`.
 
