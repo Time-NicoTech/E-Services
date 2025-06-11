@@ -63,12 +63,6 @@
         <div class="popular-services">
             <h1 class="ps-title">Resultados para sua pesquisa:</h1>
             <div class="ps-cards">
-                <div class="ps-card">
-                    <img src="../assets/imgs/servico-tecnico.png" class="service-image"alt="">
-                    <h1 class="ps-card-title">Contrutor</h1>
-                    <h2 class="ps-card-value">R$20,00</h2>
-                    <button class="seemore-btn"><a href="">Ver Mais</a></button>
-                </div>
                 {% if services %}
                     {% for service in services %}
                         {% include 'partials/cardForSearchPage.html' with item=service %}
